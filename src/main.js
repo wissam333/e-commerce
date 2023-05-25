@@ -21,9 +21,10 @@ import { faPhone } from '@fortawesome/free-solid-svg-icons'
 import { faCartPlus } from '@fortawesome/free-solid-svg-icons'
 import { faSearch } from '@fortawesome/free-solid-svg-icons'
 import { faUser } from '@fortawesome/free-solid-svg-icons'
+import { faXmark } from '@fortawesome/free-solid-svg-icons'
 
 /* add icons to the library */
-library.add(faPhone, faSearch, faCartPlus,faUser)
+library.add(faPhone, faSearch, faCartPlus, faUser, faXmark)
 
 const app = createApp(App)
 

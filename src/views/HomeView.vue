@@ -14,31 +14,84 @@
 
             <div class="right_content container">
                 <div class="stage">
-                    <img src="../assets/stage.png" alt="">
+                    <img src="../assets/stage.webp" alt="">
                 </div>
                 <div class="img_wrap">
                     <div class="other">
-                        <img src="../assets/other.png" alt="">
+                        <img src="../assets/other.webp" alt="">
                     </div>
                     <div class="tour">
-                        <img src="../assets/tour.png" alt="">
+                        <img src="../assets/tour.webp" alt="">
                     </div>
                     <div class="electronic">
-                        <img src="../assets/electronic.png" alt="">
+                        <img src="../assets/electronic.webp" alt="">
                     </div>
                     <div class="snaks">
-                        <img src="../assets/snaks.png" alt="">
+                        <img src="../assets/snaks.webp" alt="">
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    <div class="category">
+        <div class="container">
+            <h3 class="head3">Shop Our Top Categories</h3>
+            <div class="images">
+                <div class="img_wrap">
+                    <span>
+                        <p>Furniture</p>
+                    </span>
+                    <img src="../assets/catgory/furniture.png" alt="">
+                </div>
+                <div class="img_wrap">
+                    <span>
+                        <p>Hand Bag</p>
+                    </span>
+                    <img src="../assets/catgory/handBag.png" alt="">
+                </div>
+                <div class="img_wrap">
+                    <span>
+                        <p>Books</p>
+                    </span>
+                    <img src="../assets/catgory/book.png" alt="">
+                </div>
+                <div class="img_wrap">
+                    <span>
+                        <p>Tech</p>
+                    </span>
+                    <img src="../assets/catgory/tech.png" alt="">
+                </div>
+                <div class="img_wrap">
+                    <span>
+                        <p>Sneakers</p>
+                    </span>
+                    <img src="../assets/catgory/sneakers.png" alt="">
+                </div>
+                <div class="img_wrap">
+                    <span>
+                        <p>Travel</p>
+                    </span>
+                    <img src="../assets/catgory/travel.png" alt="">
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="deals">
+        <div class="container">
+            <h3 class="head3">Todays Best Deals For You!</h3>
+        </div>
+    </div>
 </template>
 
 <style lang="scss" scoped>
+.head3 {
+    font-weight: 700;
+}
+
 .background_img {
     position: relative;
-    background-image: url("../assets/background.png");
+    background-image: url("../assets/background.webp");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: 50% 50%;
@@ -134,5 +187,51 @@
             }
         }
     }
+}
+
+.category {
+    padding-top: 80px;
+    margin-bottom: 100px;
+
+    .images {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 50px;
+
+        .img_wrap {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+
+            span {
+                position: absolute;
+                top: 0;
+                width: 100%;
+                z-index: 5;
+
+                p {
+                    text-align: center;
+                    margin: 0;
+                    padding: 20px;
+                    color: #fff;
+                    font-weight: 600;
+                    font-size: 23px;
+
+                }
+            }
+
+            img {
+                cursor: pointer;
+                transition: all 0.3s ease-in-out;
+
+                &:hover {
+                    transform: scale3d(1.2, 1.2, 1);
+                }
+            }
+        }
+    }
+}
+.deals{
+    padding-top: 80px;
 }
 </style>

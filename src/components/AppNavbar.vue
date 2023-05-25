@@ -1,127 +1,169 @@
 <template>
-    <div class="padding_container container">
-        <nav class="navi  navbar  navbar-expand-xl">
+    <div class="padding_container" id="navbar">
+        <div class="container">
+            <nav class="navi  navbar  navbar-expand-xl">
 
-            <RouterLink to="/" class="logo navbar-brand">
-                <img src="../assets/logo.svg" alt="">
-            </RouterLink>
+                <RouterLink to="/" class="logo navbar-brand">
+                    <img src="../assets/logo.svg" alt="">
+                </RouterLink>
 
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
 
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navigation navbar-nav">
-                    <li class="nav-item">
-                        <div class="dropdown">
-                            <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton1"
-                                data-bs-toggle="dropdown" aria-expanded="false">
-                                Dropdown button
-                            </button>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                <h5>Popular Category</h5>
-                                <div class="grid_container">
-                                    <ul>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navigation navbar-nav">
+                        <li class="nav-item">
+                            <div class="dropdown">
+                                <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton1"
+                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                    Dropdown button
+                                </button>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                    <h5>Popular Category</h5>
+                                    <div class="grid_container">
+                                        <ul>
 
-                                        <li class="itemes"><a class="dropdown-item" href="#">
-                                                <img src="../assets/furniture.png" alt="">
-                                                <div class="wrapper">
-                                                    <p>Furniture</p>
-                                                    <p>240 Item Available</p>
-                                                </div>
-                                            </a>
-                                        </li>
+                                            <li class="itemes"><a class="dropdown-item" href="#">
+                                                    <img src="../assets/furniture.webp" alt="">
+                                                    <div class="wrapper">
+                                                        <p>Furniture</p>
+                                                        <p>240 Item Available</p>
+                                                    </div>
+                                                </a>
+                                            </li>
 
-                                        <li class="itemes"><a class="dropdown-item" href="#">
-                                                <img src="../assets/handBag.png" alt="">
-                                                <div class="wrapper">
-                                                    <p>Hand Bag</p>
-                                                    <p>240 Item Available</p>
-                                                </div>
-                                            </a>
-                                        </li>
+                                            <li class="itemes"><a class="dropdown-item" href="#">
+                                                    <img src="../assets/handBag.webp" alt="">
+                                                    <div class="wrapper">
+                                                        <p>Hand Bag</p>
+                                                        <p>240 Item Available</p>
+                                                    </div>
+                                                </a>
+                                            </li>
 
-                                        <li class="itemes">
-                                            <a class="dropdown-item" href="#">
-                                                <img src="../assets/shoe.png" alt="">
-                                                <div class="wrapper">
-                                                    <p>Shoe</p>
-                                                    <p>240 Item Available</p>
-                                                </div>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                    <ul>
+                                            <li class="itemes">
+                                                <a class="dropdown-item" href="#">
+                                                    <img src="../assets/shoe.webp" alt="">
+                                                    <div class="wrapper">
+                                                        <p>Shoe</p>
+                                                        <p>240 Item Available</p>
+                                                    </div>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                        <ul>
 
-                                        <li class="itemes"><a class="dropdown-item" href="#">
-                                                <img src="../assets/headphone.png" alt="">
-                                                <div class="wrapper">
-                                                    <p>Headphone</p>
-                                                    <p>240 Item Available</p>
-                                                </div>
-                                            </a>
-                                        </li>
+                                            <li class="itemes"><a class="dropdown-item" href="#">
+                                                    <img src="../assets/headphone.webp" alt="">
+                                                    <div class="wrapper">
+                                                        <p>Headphone</p>
+                                                        <p>240 Item Available</p>
+                                                    </div>
+                                                </a>
+                                            </li>
 
-                                        <li class="itemes"><a class="dropdown-item" href="#">
-                                                <img src="../assets/laptop.png" alt="">
-                                                <div class="wrapper">
-                                                    <p>Laptop</p>
-                                                    <p>240 Item Available</p>
-                                                </div>
-                                            </a>
-                                        </li>
+                                            <li class="itemes"><a class="dropdown-item" href="#">
+                                                    <img src="../assets/laptop.webp" alt="">
+                                                    <div class="wrapper">
+                                                        <p>Laptop</p>
+                                                        <p>240 Item Available</p>
+                                                    </div>
+                                                </a>
+                                            </li>
 
-                                        <li class="itemes"><a class="dropdown-item" href="#">
-                                                <img src="../assets/book.png" alt="">
-                                                <div class="wrapper">
-                                                    <p>Book</p>
-                                                    <p>240 Item Available</p>
-                                                </div>
-                                            </a>
-                                        </li>
-                                    </ul>
+                                            <li class="itemes"><a class="dropdown-item" href="#">
+                                                    <img src="../assets/book.webp" alt="">
+                                                    <div class="wrapper">
+                                                        <p>Book</p>
+                                                        <p>240 Item Available</p>
+                                                    </div>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </li>
-                    <RouterLink to="DealsView" class="nav-item">Deals</RouterLink>
-                    <RouterLink to="WhatsNewView" class="nav-item">What's New</RouterLink>
-                    <RouterLink to="DeliveryView" class="nav-item">Delivery</RouterLink>
-                    <li class="nav-item">
-                        <form class="d-flex">
-                            <div class="search_field">
-                                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                                <font-awesome-icon class="search_icon" :icon="['fas', 'search']" />
-                            </div>
-                        </form>
-                    </li>
-                    <ul class="user_op navigation">
-                        <RouterLink to="AccountView" class="nav_right nav-item">
-                            <font-awesome-icon :icon="['fas', 'user']" />
-                            Account
-                        </RouterLink>
-                        <li class="nav_right nav-item">
-                            <font-awesome-icon :icon="['fas', 'cart-plus']" />
-                            Cart
                         </li>
+                        <RouterLink to="DealsView" class="nav-item">Deals</RouterLink>
+                        <RouterLink to="WhatsNewView" class="nav-item">What's New</RouterLink>
+                        <RouterLink to="DeliveryView" class="nav-item">Delivery</RouterLink>
+                        <li class="nav-item">
+                            <form class="d-flex">
+                                <div class="search_field">
+                                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                                    <font-awesome-icon class="search_icon" :icon="['fas', 'search']" />
+                                </div>
+                            </form>
+                        </li>
+                        <ul class="user_op navigation">
+                            <RouterLink to="AccountView" class="nav_right nav-item">
+                                <font-awesome-icon :icon="['fas', 'user']" />
+                                Account
+                            </RouterLink>
+                            <li class="nav_right nav-item" @click="openCart = true">
+                                <font-awesome-icon :icon="['fas', 'cart-plus']" />
+                                Cart
+                            </li>
+                        </ul>
                     </ul>
-                </ul>
-            </div>
+                </div>
+            </nav>
+        </div>
+    </div>
 
-        </nav>
+    <!--cart managment -->
+    <div class="cart_content" :class="openCart == true ? 'open' : ''">
+        <div class="close_cart">
+            <font-awesome-icon @click="openCart = false" :icon="['fas', 'xmark']" />
+        </div>
+        <div class="cart">
+            <p>Subtotal</p>
+            <p class="sum">${{ Subtotal }}</p>
+            <button>Go to cart</button>
+        </div>
     </div>
 </template>
-<script>
-export default {
-    setup() {
 
-    },
-}
+<script setup>
+import { ref, onMounted } from 'vue';
+
+const openCart = ref(false);
+const Subtotal = ref(0);
+
+onMounted(() => {
+
+    // When the user scrolls the page, execute myFunction
+    window.onscroll = function () { myFunction() };
+
+    // Get the navbar
+    let navbar = document.getElementById("navbar");
+
+    // Get the offset position of the navbar
+    let sticky = navbar.offsetTop;
+
+    // Add the sticky class to the navbar when you reach its scroll position. Remove "sticky" when you leave the scroll position
+    function myFunction() {
+        if (window.pageYOffset >= sticky) {
+            navbar.classList.add("sticky")
+        } else {
+            navbar.classList.remove("sticky");
+        }
+    }
+
+})
+
 </script>
 <style lang="scss" scoped>
 .padding_container {
     background-color: #fff;
+    z-index: 100;
+    &.sticky {
+        position: fixed;
+        top: 0;
+        width: 100%;
+    }
 
     .navi {
         align-items: baseline;
@@ -147,6 +189,7 @@ export default {
                     margin-right: 15px;
                     text-decoration: none;
                     color: #000;
+                    cursor: pointer;
 
                     &:last-child {
                         margin-right: 0;
@@ -274,6 +317,60 @@ export default {
                         padding: 10px;
                     }
                 }
+            }
+        }
+    }
+}
+
+.cart_content {
+    transform: translateX(100%);
+    width: 150px;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    right: 0;
+    background: #fff;
+    transition: 0.8s ease-in-out;
+    z-index: 3;
+}
+
+@media (min-width: 1200px) {
+    .cart_content {
+        z-index: 101;
+        &.open {
+            transform: translateX(0%);
+        }
+
+        .close_cart {
+            svg {
+                padding: 10px;
+                font-size: 20px;
+            }
+        }
+
+        .cart {
+            text-align: center;
+            font-size: 13px;
+
+            p {
+                margin-bottom: 0;
+            }
+
+            .sum {
+                color: #B12704;
+                font-size: 16px;
+                font-weight: 700;
+            }
+
+            button {
+                background: #FFF;
+                padding: 0px 20px;
+                border-radius: 30px;
+                border-color: #D5D9D9;
+                border-style: solid;
+                border-width: 1px;
+                box-shadow: 0 2px 5px 0 rgba(213, 217, 217, .5);
+                cursor: pointer;
             }
         }
     }

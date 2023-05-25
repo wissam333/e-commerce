@@ -4,49 +4,55 @@ import AppNavbar from './components/AppNavbar.vue';
 </script>
 
 <template>
-  <div class="background_container">
-    <div class="banner container">
-      <div class="phone">
-        <font-awesome-icon :icon="['fa', 'phone']" />
-        +963911111111
-      </div>
-      <div class="offer">Get 50% off on selected items | shop now</div>
-      <div class="lang_location">
-        <!--languages picker-->
-        <div>
-          <div class="language-picker">
-            <form action="" class="language-picker__form">
-              <select name="language-picker-select">
-                <option lang="ar" value="deutsch">Arabic</option>
-                <option lang="en" value="english" selected>English</option>
-                <option lang="fr" value="francais">Français</option>
-                <option lang="it" value="italiano">Italiano</option>
-              </select>
-            </form>
-          </div>
+  <div class="app">
+    <div class="background_container">
+      <div class="banner container">
+        <div class="phone">
+          <font-awesome-icon :icon="['fa', 'phone']" />
+          +963911111111
         </div>
+        <div class="offer">Get 50% off on selected items | shop now</div>
+        <div class="lang_location">
+          <!--languages picker-->
+          <div>
+            <div class="language-picker">
+              <form action="" class="language-picker__form">
+                <select name="language-picker-select">
+                  <option lang="ar" value="deutsch">Arabic</option>
+                  <option lang="en" value="english" selected>English</option>
+                  <option lang="fr" value="francais">Français</option>
+                  <option lang="it" value="italiano">Italiano</option>
+                </select>
+              </form>
+            </div>
+          </div>
 
-        <!--location picker-->
-        <div>
-          <div class="location-picker">
-            <form action="" class="location-picker__form">
-              <select name="location-picker-select">
-                <option value="Syria">Syria</option>
-                <option value="US" selected>US</option>
-                <option value="France">France</option>
-                <option value="UK">UK</option>
-              </select>
-            </form>
+          <!--location picker-->
+          <div>
+            <div class="location-picker">
+              <form action="" class="location-picker__form">
+                <select name="location-picker-select">
+                  <option value="Syria">Syria</option>
+                  <option value="US" selected>US</option>
+                  <option value="France">France</option>
+                  <option value="UK">UK</option>
+                </select>
+              </form>
+            </div>
           </div>
         </div>
       </div>
     </div>
+    <AppNavbar></AppNavbar>
+    <RouterView></RouterView>
   </div>
-  <AppNavbar></AppNavbar>
-  <RouterView></RouterView>
 </template>
 
 <style lang="scss" scoped>
+.app {
+  min-height: 2000px;
+}
+
 .background_container {
   background-color: #013d29;
 
@@ -90,6 +96,11 @@ import AppNavbar from './components/AppNavbar.vue';
           min-width: 80px;
           padding: 5px;
           outline: none;
+
+          option {
+            background: #fff;
+            color: #000;
+          }
         }
       }
 
