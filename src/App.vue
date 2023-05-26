@@ -8,7 +8,7 @@ import AppNavbar from './components/AppNavbar.vue';
     <div class="background_container">
       <div class="banner container">
         <div class="phone">
-          <font-awesome-icon :icon="['fa', 'phone']" />
+          <i class="bi bi-telephone"></i>
           +963911111111
         </div>
         <div class="offer">Get 50% off on selected items | shop now</div>

@@ -1,6 +1,4 @@
-<script setup>
-</script>
-
+<!-- eslint-disable vue/require-v-for-key -->
 <template>
     <div class="background_img">
         <div class="full container">
@@ -77,13 +75,93 @@
             </div>
         </div>
     </div>
+
     <div class="deals">
         <div class="container">
             <h3 class="head3">Todays Best Deals For You!</h3>
+
+            <Carousel v-bind="settings" :breakpoints="breakpoints">
+                <Slide class="item" v-for="item in listItems" :key="item.title">
+                    <div class="heart">
+
+                        <i class="bi bi-heart"></i>
+                    </div>
+                    <div class="carousel__item deals_items">
+                        <div>
+                            <div class="item_img">
+                                <img :src="item.image" alt="">
+                            </div>
+                            <div class="item_description">
+                                <h5 class="title"> {{ item.title }} </h5>
+                                <p class="description"> {{ item.description }}</p>
+                                <div class="starts">
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    (120)
+                                </div>
+                                <button class="addToCart">Add to cart</button>
+                            </div>
+                        </div>
+
+                    </div>
+                </Slide>
+            </Carousel>
+
+
+
+
         </div>
     </div>
 </template>
+<script setup>
+import { ref } from 'vue';
+import { defineComponent } from 'vue'
+import { Carousel, Slide } from 'vue3-carousel'
+import 'vue3-carousel/dist/carousel.css'
 
+defineComponent({
+    name: 'BreakPoints',
+    components: {
+        Carousel,
+        Slide,
+    },
+})
+
+const settings = ref({
+    itemsToShow: 1,
+    snapAlign: 'center',
+})
+
+const breakpoints = ref({
+    // 700px and up
+    700: {
+        itemsToShow: 2,
+        snapAlign: 'center',
+    },
+    // 1024 and up
+    1024: {
+        itemsToShow: 3,
+        snapAlign: 'start',
+    },
+})
+
+
+
+
+const listItems = ref([]);
+
+const getData = async () => {
+    const res = await fetch("https://fakestoreapi.com/products?limit=15");
+    const finalRes = await res.json();
+    listItems.value = finalRes;
+}
+getData();
+
+
+</script>
 <style lang="scss" scoped>
 .head3 {
     font-weight: 700;
@@ -194,9 +272,20 @@
     margin-bottom: 100px;
 
     .images {
-        display: flex;
-        justify-content: space-between;
+        display: grid;
+        grid-column-gap: 27px;
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
         margin-top: 50px;
+
+        @media (max-width: 1200px) {
+            grid-template-columns: 1fr 1fr 1fr;
+            grid-row-gap: 27px;
+        }
+
+        @media (max-width: 768px) {
+            grid-template-columns: 1fr 1fr;
+            grid-row-gap: 27px;
+        }
 
         .img_wrap {
             position: relative;
@@ -221,6 +310,8 @@
             }
 
             img {
+                width: 100%;
+                height: 100%;
                 cursor: pointer;
                 transition: all 0.3s ease-in-out;
 
@@ -231,7 +322,93 @@
         }
     }
 }
-.deals{
+
+.deals {
     padding-top: 80px;
+
+    .item {
+        .heart {
+            position: absolute;
+            top: 25px;
+            right: 25px;
+            font-size: 20px;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            color: #4f4f4f;
+            background: #f5f6f6;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+
+            .heart_on {}
+        }
+
+        .deals_items {
+            display: flex;
+            list-style: none;
+            margin-top: 50px;
+
+
+            .item_img {
+                width: 250px;
+                height: 250px;
+                margin: auto;
+
+                img {
+                    width: 100%;
+                    height: 100%;
+                }
+
+            }
+
+            .item_description {
+
+                .title,
+                .description {
+                    text-overflow: ellipsis;
+                    /* will make [...] at the end */
+                    white-space: nowrap;
+                    /* paragraph to one line */
+                    overflow: hidden;
+                    /* older browsers */
+                }
+
+                .title {
+                    width: 200px;
+                }
+
+                .description {
+                    width: 300px;
+                    font-size: 13px;
+                }
+
+                .starts {
+                    font-size: 14px;
+                    text-align: left;
+                    color: rgb(34, 181, 34);
+                }
+
+                .addToCart {
+                    display: block;
+                    font-weight: 600;
+                    background-color: transparent;
+                    border: 1px solid #000;
+                    border-radius: 30px;
+                    padding: 8px 16px;
+                    margin-top: 20px;
+                    transition: all 0.3s ease-in-out;
+
+                    &:hover {
+                        background-color: #013d29;
+                        color: #fff;
+                    }
+                }
+            }
+
+        }
+    }
+
 }
 </style>

@@ -93,17 +93,17 @@
                             <form class="d-flex">
                                 <div class="search_field">
                                     <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                                    <font-awesome-icon class="search_icon" :icon="['fas', 'search']" />
+                                    <i class="bi bi-search"></i>
                                 </div>
                             </form>
                         </li>
                         <ul class="user_op navigation">
                             <RouterLink to="AccountView" class="nav_right nav-item">
-                                <font-awesome-icon :icon="['fas', 'user']" />
+                                <i class="bi bi-person"></i>
                                 Account
                             </RouterLink>
                             <li class="nav_right nav-item" @click="openCart = true">
-                                <font-awesome-icon :icon="['fas', 'cart-plus']" />
+                                <i class="bi bi-cart-plus"></i>
                                 Cart
                             </li>
                         </ul>
@@ -116,7 +116,7 @@
     <!--cart managment -->
     <div class="cart_content" :class="openCart == true ? 'open' : ''">
         <div class="close_cart">
-            <font-awesome-icon @click="openCart = false" :icon="['fas', 'xmark']" />
+            <i @click="openCart = false" class="bi bi-x"></i>
         </div>
         <div class="cart">
             <p>Subtotal</p>
@@ -159,10 +159,15 @@ onMounted(() => {
 .padding_container {
     background-color: #fff;
     z-index: 100;
+
     &.sticky {
         position: fixed;
         top: 0;
         width: 100%;
+
+        @media (max-width: 1200px) {
+            position: relative;
+        }
     }
 
     .navi {
@@ -298,9 +303,9 @@ onMounted(() => {
                             padding: 10px 20px;
                         }
 
-                        .search_icon {
+                        i {
                             position: absolute;
-                            padding: 15px;
+                            padding: 10px;
                             min-width: 40px;
                             top: 0;
                             right: 0;
@@ -312,9 +317,9 @@ onMounted(() => {
                     display: flex;
                     align-items: center;
 
-                    svg {
-                        font-size: 20px;
-                        padding: 10px;
+                    i {
+                        font-size: 25px;
+                        padding: 5px 10px;
                     }
                 }
             }
@@ -337,14 +342,16 @@ onMounted(() => {
 @media (min-width: 1200px) {
     .cart_content {
         z-index: 101;
+
         &.open {
             transform: translateX(0%);
         }
 
         .close_cart {
-            svg {
+            i {
                 padding: 10px;
                 font-size: 20px;
+                cursor: pointer;
             }
         }
 
