@@ -1,3 +1,4 @@
+<!-- eslint-disable vue/require-v-for-key -->
 <template>
     <div class="padding_container" id="navbar">
         <div class="container">
@@ -122,27 +123,75 @@
             <p>Subtotal</p>
             <p class="sum">${{ Subtotal }}</p>
             <button>Go to cart</button>
+            <hr>
+            <div class="cart_wrapper">
+                <div class="cart_items" id="cart">
+                    <div class="items" v-for="item in filterd">
+                        <div v-if="item">
+                            <div class="item_image">
+                                <img :src="item.image" alt="">
+                            </div>
+                            <div class="price">
+                                {{ item.price }}
+                            </div>
+                            <div class="delete_qty">
+                                <div class="qty">
+                                    <button @click="item.qty = item.qty + 1">+</button>
+                                    {{ item.qty }}
+                                    <button @click="item.qty >= 1 ? item.qty = item.qty - 1 : ''">-</button>
+                                </div>
+                                <div class="delete">
+                                    <i @click="item.inCart = false; item.qty = 0;" class="bi bi-trash"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <hr>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue';
+import { ref, onMounted, computed, watch } from 'vue';
+//store
+import { getDataProduct } from "../stores/counter";
+import { storeToRefs } from "pinia";
+
+const getItems = getDataProduct();
+const { listItems } = storeToRefs(getItems);
+//end store
+
+const filterd = computed(() => {
+    return listItems.value.filter(item => {
+        if (item.inCart) {
+            return item
+        }
+    }
+    );
+})
+
+const Subtotal = ref(0);
+watch(() => {
+    Subtotal.value = 0
+    listItems.value.forEach(item => {
+        if (item.inCart) {
+            Subtotal.value = Subtotal.value + (item.price) * item.qty;
+        }
+    })
+})
+
 
 const openCart = ref(false);
-const Subtotal = ref(0);
 
 onMounted(() => {
-
     // When the user scrolls the page, execute myFunction
     window.onscroll = function () { myFunction() };
-
     // Get the navbar
     let navbar = document.getElementById("navbar");
-
     // Get the offset position of the navbar
     let sticky = navbar.offsetTop;
-
     // Add the sticky class to the navbar when you reach its scroll position. Remove "sticky" when you leave the scroll position
     function myFunction() {
         if (window.pageYOffset >= sticky) {
@@ -151,9 +200,7 @@ onMounted(() => {
             navbar.classList.remove("sticky");
         }
     }
-
 })
-
 </script>
 <style lang="scss" scoped>
 .padding_container {
@@ -328,6 +375,7 @@ onMounted(() => {
 }
 
 .cart_content {
+    border-left: 1px solid #bbb;
     transform: translateX(100%);
     width: 150px;
     height: 100vh;
@@ -378,6 +426,53 @@ onMounted(() => {
                 border-width: 1px;
                 box-shadow: 0 2px 5px 0 rgba(213, 217, 217, .5);
                 cursor: pointer;
+            }
+
+            .cart_wrapper {
+
+                .cart_items {
+                    width: 100%;
+                    height: calc(100vh - 127.7px);
+                    overflow: auto;
+                    overflow-x: hidden;
+
+                    .item_image {
+                        width: 100px;
+                        height: 100px;
+                        margin: auto;
+
+                        img {
+                            width: 100%;
+                            height: 100%;
+                        }
+                    }
+
+                    .delete_qty {
+                        .qty {
+                            input {
+                                width: 44px;
+                                border-radius: 26px;
+                                border: 1px solid #000;
+                            }
+
+                            button {
+                                width: 25px;
+                                padding: 0px;
+                                margin: 3px;
+                                height: 25px;
+                                border: 1px solid #333;
+                            }
+                        }
+
+                        .delete {
+                            i {
+                                font-size: 16px;
+                                padding: 0px 8px;
+                                cursor: pointer;
+                            }
+                        }
+                    }
+                }
             }
         }
     }

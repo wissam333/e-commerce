@@ -81,37 +81,39 @@
             <h3 class="head3">Todays Best Deals For You!</h3>
 
             <Carousel v-bind="settings" :breakpoints="breakpoints">
-                <Slide class="item" v-for="item in listItems" :key="item.title">
-                    <div class="heart">
-
-                        <i class="bi bi-heart"></i>
+                <Slide class="item" v-for="item in listItems" :key="item.id">
+                    <div class="heart" @click="item.like = !item.like">
+                        <i v-if="!item.like" class="bi bi-heart"></i>
+                        <i v-if="item.like" class="bi bi-heart-fill"></i>
                     </div>
                     <div class="carousel__item deals_items">
                         <div>
                             <div class="item_img">
                                 <img :src="item.image" alt="">
                             </div>
-                            <div class="item_description">
-                                <h5 class="title"> {{ item.title }} </h5>
-                                <p class="description"> {{ item.description }}</p>
-                                <div class="starts">
-                                    <i class="bi bi-star-fill"></i>
-                                    <i class="bi bi-star-fill"></i>
-                                    <i class="bi bi-star-fill"></i>
-                                    <i class="bi bi-star-fill"></i>
-                                    <i class="bi bi-star-fill"></i>
-                                    (120)
+                            <div class="item_text">
+                                <div class="item_description">
+                                    <h5 class="title"> {{ item.title }} </h5>
+                                    <p class="description"> {{ item.description }}</p>
+                                    <div class="starts">
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        (120)
+                                    </div>
+                                    <button @click="item.inCart = true; item.qty = 1" class="addToCart">Add to cart</button>
                                 </div>
-                                <button class="addToCart">Add to cart</button>
+                                <div class="item_price">
+                                    ${{ item.price }}
+                                </div>
                             </div>
                         </div>
 
                     </div>
                 </Slide>
             </Carousel>
-
-
-
 
         </div>
     </div>
@@ -121,7 +123,15 @@ import { ref } from 'vue';
 import { defineComponent } from 'vue'
 import { Carousel, Slide } from 'vue3-carousel'
 import 'vue3-carousel/dist/carousel.css'
+//store
+import { getDataProduct } from "../stores/counter";
+import { storeToRefs } from "pinia";
 
+const getItems = getDataProduct();
+const { listItems } = storeToRefs(getItems);
+//end store
+
+// slider
 defineComponent({
     name: 'BreakPoints',
     components: {
@@ -148,18 +158,7 @@ const breakpoints = ref({
     },
 })
 
-
-
-
-const listItems = ref([]);
-
-const getData = async () => {
-    const res = await fetch("https://fakestoreapi.com/products?limit=15");
-    const finalRes = await res.json();
-    listItems.value = finalRes;
-}
-getData();
-
+//end slider
 
 </script>
 <style lang="scss" scoped>
@@ -336,13 +335,18 @@ getData();
             width: 40px;
             height: 40px;
             display: flex;
-            color: #4f4f4f;
             background: #f5f6f6;
             align-items: center;
             justify-content: center;
             cursor: pointer;
 
-            .heart_on {}
+            .bi-heart-fill {
+                color: red;
+            }
+
+            .bi-heart {
+                color: #4f4f4f;
+            }
         }
 
         .deals_items {
@@ -363,47 +367,55 @@ getData();
 
             }
 
-            .item_description {
+            .item_text {
+                display: flex;
 
-                .title,
-                .description {
-                    text-overflow: ellipsis;
-                    /* will make [...] at the end */
-                    white-space: nowrap;
-                    /* paragraph to one line */
-                    overflow: hidden;
-                    /* older browsers */
-                }
+                .item_description {
 
-                .title {
-                    width: 200px;
-                }
-
-                .description {
-                    width: 300px;
-                    font-size: 13px;
-                }
-
-                .starts {
-                    font-size: 14px;
-                    text-align: left;
-                    color: rgb(34, 181, 34);
-                }
-
-                .addToCart {
-                    display: block;
-                    font-weight: 600;
-                    background-color: transparent;
-                    border: 1px solid #000;
-                    border-radius: 30px;
-                    padding: 8px 16px;
-                    margin-top: 20px;
-                    transition: all 0.3s ease-in-out;
-
-                    &:hover {
-                        background-color: #013d29;
-                        color: #fff;
+                    .title,
+                    .description {
+                        text-overflow: ellipsis;
+                        /* will make [...] at the end */
+                        white-space: nowrap;
+                        /* paragraph to one line */
+                        overflow: hidden;
+                        /* older browsers */
                     }
+
+                    .title {
+                        width: 150px;
+                    }
+
+                    .description {
+                        width: 200px;
+                        font-size: 13px;
+                    }
+
+                    .starts {
+                        font-size: 14px;
+                        text-align: left;
+                        color: rgb(34, 181, 34);
+                    }
+
+                    .addToCart {
+                        display: block;
+                        font-weight: 600;
+                        background-color: transparent;
+                        border: 1px solid #000;
+                        border-radius: 30px;
+                        padding: 8px 16px;
+                        margin-top: 20px;
+                        transition: all 0.3s ease-in-out;
+
+                        &:hover {
+                            background-color: #013d29;
+                            color: #fff;
+                        }
+                    }
+                }
+
+                .item_price {
+                    font-weight: 700;
                 }
             }
 
