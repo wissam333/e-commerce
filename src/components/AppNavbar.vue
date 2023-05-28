@@ -99,14 +99,18 @@
                             </form>
                         </li>
                         <ul class="user_op navigation">
-                            <RouterLink to="AccountView" class="nav_right nav-item">
+                            <RouterLink to="AccountView" class="Account_icon nav-item">
                                 <i class="bi bi-person"></i>
                                 Account
                             </RouterLink>
-                            <li class="nav_right nav-item" @click="openCart = true">
+                            <li class="Cart_icon_to_miniCart nav-item" @click="openCart = true">
                                 <i class="bi bi-cart-plus"></i>
                                 Cart
                             </li>
+                            <RouterLink to="/CartView" class="Cart_icon_to_cart nav-item">
+                                <i class="bi bi-cart-plus"></i>
+                                Cart
+                            </RouterLink>
                         </ul>
                     </ul>
                 </div>
@@ -121,8 +125,8 @@
         </div>
         <div class="cart">
             <p>Subtotal</p>
-            <p class="sum">${{ Subtotal }}</p>
-            <button>Go to cart</button>
+            <p class="sum">${{ Subtotal.toFixed(2) }}</p>
+            <RouterLink to="/CartView"> <button>Go to cart</button> </RouterLink>
             <hr>
             <div class="cart_wrapper">
                 <div class="cart_items" id="cart">
@@ -132,13 +136,16 @@
                                 <img :src="item.image" alt="">
                             </div>
                             <div class="price">
-                                {{ item.price }}
+                                ${{ item.price }}
                             </div>
                             <div class="delete_qty">
-                                <div class="qty">
-                                    <button @click="item.qty = item.qty + 1">+</button>
-                                    {{ item.qty }}
-                                    <button @click="item.qty >= 1 ? item.qty = item.qty - 1 : ''">-</button>
+                                <div class="quantity">
+                                    <span
+                                        @click="item.qty > 1 ? (item.qty = parseFloat(item.qty) - 1) : (item.qty = item.qty)"
+                                        class="quantity__minus"><span>-</span></span>
+                                    <input name="quantity" type="text" class="quantity__input" v-model="item.qty" min="1">
+                                    <span @click="item.qty = parseFloat(item.qty) + 1"
+                                        class="quantity__plus"><span>+</span></span>
                                 </div>
                                 <div class="delete">
                                     <i @click="item.inCart = false; item.qty = 0;" class="bi bi-trash"></i>
@@ -154,33 +161,16 @@
 </template>
 
 <script setup>
-import { ref, onMounted, computed, watch } from 'vue';
+import { ref, onMounted } from 'vue';
 //store
 import { getDataProduct } from "../stores/counter";
 import { storeToRefs } from "pinia";
 
 const getItems = getDataProduct();
-const { listItems } = storeToRefs(getItems);
+const { filterd, Subtotal } = storeToRefs(getItems);
 //end store
 
-const filterd = computed(() => {
-    return listItems.value.filter(item => {
-        if (item.inCart) {
-            return item
-        }
-    }
-    );
-})
 
-const Subtotal = ref(0);
-watch(() => {
-    Subtotal.value = 0
-    listItems.value.forEach(item => {
-        if (item.inCart) {
-            Subtotal.value = Subtotal.value + (item.price) * item.qty;
-        }
-    })
-})
 
 
 const openCart = ref(false);
@@ -360,13 +350,41 @@ onMounted(() => {
                     }
                 }
 
-                .nav_right {
+                .Account_icon {
                     display: flex;
                     align-items: center;
 
                     i {
                         font-size: 25px;
                         padding: 5px 10px;
+                    }
+                }
+
+                .Cart_icon_to_cart {
+                    display: none;
+
+                    @media (max-width: 1200px) {
+                        display: flex;
+                        align-items: center;
+
+                        i {
+                            font-size: 25px;
+                            padding: 5px 10px;
+                        }
+                    }
+                }
+
+                .Cart_icon_to_miniCart {
+                    display: none;
+
+                    @media (min-width: 1200px) {
+                        display: flex;
+                        align-items: center;
+
+                        i {
+                            font-size: 25px;
+                            padding: 5px 10px;
+                        }
                     }
                 }
             }
@@ -448,20 +466,11 @@ onMounted(() => {
                     }
 
                     .delete_qty {
-                        .qty {
-                            input {
-                                width: 44px;
-                                border-radius: 26px;
-                                border: 1px solid #000;
-                            }
+                        display: flex;
+                        justify-content: center;
 
-                            button {
-                                width: 25px;
-                                padding: 0px;
-                                margin: 3px;
-                                height: 25px;
-                                border: 1px solid #333;
-                            }
+                        .quantity {
+                            justify-content: center;
                         }
 
                         .delete {

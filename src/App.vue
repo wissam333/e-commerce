@@ -49,9 +49,6 @@ import AppNavbar from './components/AppNavbar.vue';
 </template>
 
 <style lang="scss" scoped>
-.app {
-  min-height: 2000px;
-}
 
 .background_container {
   background-color: #013d29;
