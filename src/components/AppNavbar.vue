@@ -19,75 +19,60 @@
                             <div class="dropdown">
                                 <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton1"
                                     data-bs-toggle="dropdown" aria-expanded="false">
-                                    Dropdown button
+                                    Shop By Category
                                 </button>
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                                     <h5>Popular Category</h5>
                                     <div class="grid_container">
                                         <ul>
 
-                                            <li class="itemes"><a class="dropdown-item" href="#">
+                                            <li class="itemes">
+                                                <RouterLink to="/ShopByCategory/electronics" class="dropdown-item">
                                                     <img src="../assets/furniture.webp" alt="">
                                                     <div class="wrapper">
-                                                        <p>Furniture</p>
+                                                        <p>Electronics</p>
                                                         <p>240 Item Available</p>
                                                     </div>
-                                                </a>
-                                            </li>
-
-                                            <li class="itemes"><a class="dropdown-item" href="#">
-                                                    <img src="../assets/handBag.webp" alt="">
-                                                    <div class="wrapper">
-                                                        <p>Hand Bag</p>
-                                                        <p>240 Item Available</p>
-                                                    </div>
-                                                </a>
+                                                </RouterLink>
                                             </li>
 
                                             <li class="itemes">
-                                                <a class="dropdown-item" href="#">
-                                                    <img src="../assets/shoe.webp" alt="">
+                                                <RouterLink to="/ShopByCategory/jewelery" class="dropdown-item">
+                                                    <img src="../assets/handBag.webp" alt="">
                                                     <div class="wrapper">
-                                                        <p>Shoe</p>
+                                                        <p>Jewelery</p>
                                                         <p>240 Item Available</p>
                                                     </div>
-                                                </a>
+                                                </RouterLink>
                                             </li>
                                         </ul>
                                         <ul>
+                                            <li class="itemes">
+                                                <RouterLink to="/ShopByCategory/men's clothing" class="dropdown-item">
+                                                    <img src="../assets/shoe.webp" alt="">
+                                                    <div class="wrapper">
+                                                        <p>Men's Clothing</p>
+                                                        <p>240 Item Available</p>
+                                                    </div>
+                                                </RouterLink>
+                                            </li>
 
-                                            <li class="itemes"><a class="dropdown-item" href="#">
+
+                                            <li class="itemes">
+                                                <RouterLink to="/ShopByCategory/women's clothing" class="dropdown-item">
                                                     <img src="../assets/headphone.webp" alt="">
                                                     <div class="wrapper">
-                                                        <p>Headphone</p>
+                                                        <p>Women's Clothing</p>
                                                         <p>240 Item Available</p>
                                                     </div>
-                                                </a>
-                                            </li>
-
-                                            <li class="itemes"><a class="dropdown-item" href="#">
-                                                    <img src="../assets/laptop.webp" alt="">
-                                                    <div class="wrapper">
-                                                        <p>Laptop</p>
-                                                        <p>240 Item Available</p>
-                                                    </div>
-                                                </a>
-                                            </li>
-
-                                            <li class="itemes"><a class="dropdown-item" href="#">
-                                                    <img src="../assets/book.webp" alt="">
-                                                    <div class="wrapper">
-                                                        <p>Book</p>
-                                                        <p>240 Item Available</p>
-                                                    </div>
-                                                </a>
+                                                </RouterLink>
                                             </li>
                                         </ul>
                                     </div>
                                 </div>
                             </div>
                         </li>
-                        <RouterLink to="DealsView" class="nav-item">Deals</RouterLink>
+                        <RouterLink to="/" class="nav-item">Home</RouterLink>
                         <RouterLink to="WhatsNewView" class="nav-item">What's New</RouterLink>
                         <RouterLink to="DeliveryView" class="nav-item">Delivery</RouterLink>
                         <li class="nav-item">
@@ -104,6 +89,7 @@
                                 Account
                             </RouterLink>
                             <li class="Cart_icon_to_miniCart nav-item" @click="openCart = true">
+                                <span v-if="itemCount !== 0" class="itemS_inCart">{{ itemCount }}</span>
                                 <i class="bi bi-cart-plus"></i>
                                 Cart
                             </li>
@@ -167,7 +153,7 @@ import { getDataProduct } from "../stores/counter";
 import { storeToRefs } from "pinia";
 
 const getItems = getDataProduct();
-const { filterd, Subtotal } = storeToRefs(getItems);
+const { filterd, Subtotal, itemCount } = storeToRefs(getItems);
 //end store
 
 
@@ -195,6 +181,7 @@ onMounted(() => {
 <style lang="scss" scoped>
 .padding_container {
     background-color: #fff;
+    border-bottom: 1px solid #bbb;
     z-index: 100;
 
     &.sticky {
@@ -276,7 +263,7 @@ onMounted(() => {
 
                             .grid_container {
                                 display: grid;
-                                grid-template-columns: auto auto auto;
+                                grid-template-columns: 1fr 1fr;
                                 padding: 10px;
 
                                 @media (max-width: 1200px) {
@@ -375,6 +362,7 @@ onMounted(() => {
                 }
 
                 .Cart_icon_to_miniCart {
+                    position: relative;
                     display: none;
 
                     @media (min-width: 1200px) {
@@ -385,6 +373,20 @@ onMounted(() => {
                             font-size: 25px;
                             padding: 5px 10px;
                         }
+                    }
+
+                    .itemS_inCart {
+                        position: absolute;
+                        font-size: 14px;
+                        top: 12px;
+                        color: #fff;
+                        background: #013d29;
+                        width: 20px;
+                        display: flex;
+                        border-radius: 50%;
+                        left: 33px;
+                        height: 20px;
+                        justify-content: center;
                     }
                 }
             }

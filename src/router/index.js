@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
-import DealsView from '../views/DealsView.vue'
+import ShopByCategory from '../views/ShopByCategory.vue'
 import DeliveryView from '../views/DeliveryView.vue'
 import WhatsNewView from '../views/WhatsNewView.vue'
 import AccountView from '../views/AccountView.vue'
@@ -8,6 +8,10 @@ import CartView from '../views/CartView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
+  scrollBehavior() {
+    // always scroll to top
+    return { top: 0 }
+  },
   routes: [
     {
       path: '/',
@@ -15,9 +19,9 @@ const router = createRouter({
       component: HomeView
     },
     {
-      path: '/DealsView',
-      name: 'DealsView',
-      component: DealsView
+      path: '/ShopByCategory/:category',
+      name: 'ShopByCategory',
+      component: ShopByCategory
     },
     {
       path: '/DeliveryView',

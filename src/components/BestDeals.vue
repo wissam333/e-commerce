@@ -2,8 +2,10 @@
     <div class="deals">
         <div class="container">
             <h3 class="head3">Todays Best Deals For You!</h3>
-            <swiper :breakpoints="breakpoints.swiperOptions.breakpoints" :space-between="50" @swiper="onSwiper"
-                @slideChange="onSlideChange">
+            <swiper class="swiper" :pagination="{
+                type: 'progressbar',
+            }" :modules="modules" :breakpoints="breakpoints.swiperOptions.breakpoints" :space-between="50"
+                @swiper="onSwiper" @slideChange="onSlideChange">
                 <swiper-slide class="item" v-for="item in listItems" :key="item.id">
                     <div class="heart" @click="item.like = !item.like">
                         <i v-if="!item.like" class="bi bi-heart"></i>
@@ -26,7 +28,9 @@
                                         <i class="bi bi-star-fill"></i>
                                         (120)
                                     </div>
-                                    <button @click="item.inCart = true; item.qty = 1" class="addToCart">Add to cart</button>
+                                    <button v-text="item.inCart ? 'Added to cart' : 'Add to cart'"
+                                        @click="item.inCart = true; item.qty = 1" class="addToCart"
+                                        :class="item.inCart ? 'Added' : ''"></button>
                                 </div>
                                 <div class="item_price">
                                     ${{ item.price }}
@@ -42,19 +46,25 @@
 <script setup>
 import { ref } from 'vue';
 import { defineComponent } from 'vue'
-// Import Swiper Vue.js components
-import { Swiper, SwiperSlide } from 'swiper/vue';
-// Import Swiper styles
-import 'swiper/css';
 
-//store
+// Import Swiper 
+import { Swiper, SwiperSlide } from 'swiper/vue';
+import 'swiper/css';
+import 'swiper/css/pagination';
+import 'swiper/css/navigation';
+import { Pagination } from 'swiper';
+const modules = [Pagination];
+// end Import Swiper styles
+
+// store
 import { getDataProduct } from "../stores/counter";
 import { storeToRefs } from "pinia";
 
 const getItems = getDataProduct();
 const { listItems } = storeToRefs(getItems);
-//end store
+// end store
 
+// swiper configuration
 defineComponent({
     name: 'BreakPoints',
     components: {
@@ -77,11 +87,16 @@ const breakpoints = ref({
         }
     }
 })
+// end swiper configuration
 
 </script>
 <style lang="scss" scoped>
 .deals {
     padding-top: 80px;
+
+    .head3 {
+        margin-bottom: 50px;
+    }
 
     .item {
         .heart {
@@ -110,9 +125,8 @@ const breakpoints = ref({
         .deals_items {
             display: flex;
             list-style: none;
-            margin-top: 50px;
             justify-content: center;
-
+            margin-top: 50px;
 
             .item_img {
                 width: 250px;
@@ -167,6 +181,11 @@ const breakpoints = ref({
                         transition: all 0.3s ease-in-out;
 
                         &:hover {
+                            background-color: #013d29;
+                            color: #fff;
+                        }
+
+                        &.Added {
                             background-color: #013d29;
                             color: #fff;
                         }
