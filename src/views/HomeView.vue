@@ -56,9 +56,9 @@
             <button class="learn_more">Learn more</button>
         </div>
         <div class="card_imgs">
-            <img src="../assets/visa card.png" alt="">
-            <img src="../assets/visa card2.png" alt="">
-            <img src="../assets/visa card.png" alt="">
+            <img src="../assets/visa_card.webp" alt="">
+            <img src="../assets/visa_card2.webp" alt="">
+            <img src="../assets/visa_card3.svg" alt="">
         </div>
     </div>
 

@@ -7,7 +7,15 @@ import vue from '@vitejs/plugin-vue'
 export default defineConfig({
   base: '/e-commerce/',
   assetsDir: 'assets',
-  plugins: [vue()],
+  plugins: [
+    vue({
+      template: {
+        transformAssetUrls: {
+          includeAbsolute: false
+        }
+      }
+    })
+  ],
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url))
