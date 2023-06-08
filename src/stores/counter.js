@@ -2,6 +2,7 @@ import { ref, watchEffect, computed } from 'vue'
 import { defineStore } from 'pinia'
 
 export const getDataProduct = defineStore('getDataProduct', () => {
+  //calling all items
   const listItems = ref([])
   const getData = async () => {
     const res = await fetch('https://fakestoreapi.com/products')
@@ -18,6 +19,7 @@ export const getDataProduct = defineStore('getDataProduct', () => {
   }
   getData()
 
+  // in cart items 
   let filterd = computed(() => {
     return listItems.value.filter((item) => {
       if (item.inCart) {
@@ -26,6 +28,8 @@ export const getDataProduct = defineStore('getDataProduct', () => {
     })
   })
 
+
+  // subtotal and item count
   let Subtotal = ref(0)
   let itemCount = ref(0)
   watchEffect(() => {

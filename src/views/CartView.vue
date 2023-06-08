@@ -5,6 +5,7 @@
             <div class="items_inCart">
                 <h3 class="head3">Shopping Cart</h3>
                 <hr>
+                <h2 class="empty_cart" v-if="filterd.length == 0">Your Cart Is Empty!! You Need To Add Items :3</h2>
                 <div class="items" v-for="item in filterd" :key="item.id">
                     <div class="image">
                         <img :src="item.image" alt="">
@@ -34,7 +35,8 @@
                             <div class="quantity">
                                 <span @click="item.qty > 1 ? (item.qty = parseFloat(item.qty) - 1) : (item.qty = item.qty)"
                                     class="quantity__minus"><span>-</span></span>
-                                <input name="quantity" type="text" class="quantity__input" v-model="item.qty" min="1" onkeypress="return event.charCode >= 49">
+                                <input name="quantity" type="text" class="quantity__input" v-model="item.qty" min="1"
+                                    onkeypress="return event.charCode >= 49">
                                 <span @click="item.qty = parseFloat(item.qty) + 1"
                                     class="quantity__plus"><span>+</span></span>
                             </div>
@@ -105,6 +107,10 @@ const { filterd, Subtotal, itemCount } = storeToRefs(getItems);
             .head3 {
                 padding: 10px 40px;
                 margin-top: 0.5rem;
+            }
+
+            .empty_cart {
+                padding: 10px 40px;
             }
 
             .items {
@@ -198,6 +204,7 @@ const { filterd, Subtotal, itemCount } = storeToRefs(getItems);
                         .heart {
                             font-size: 1.2rem;
                             cursor: pointer;
+
                             .bi-heart-fill {
                                 color: red;
                             }
@@ -238,6 +245,7 @@ const { filterd, Subtotal, itemCount } = storeToRefs(getItems);
             .Subtotal {
                 font-size: 18px;
                 font-weight: 700;
+
                 .dollars {
                     margin: 0;
                     color: #013d29;

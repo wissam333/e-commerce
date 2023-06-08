@@ -3,43 +3,42 @@
         <div class="container">
             <h3 class="head3">Shop Our Top Categories</h3>
             <div class="images">
-                <div class="img_wrap">
+                <RouterLink to="/ShopByCategory/men's clothing" class="img_wrap">
                     <span>
-                        <p>Furniture</p>
+                        <p>Men's Clothing</p>
                     </span>
                     <img src="../assets/catgory/furniture.png" alt="">
-                </div>
-                <div class="img_wrap">
+                </RouterLink>
+                <RouterLink to="/ShopByCategory/jewelery" class="img_wrap">
                     <span>
-                        <p>Hand Bag</p>
+                        <p>Jewelery</p>
                     </span>
                     <img src="../assets/catgory/handBag.png" alt="">
-                </div>
-                <div class="img_wrap">
+                </RouterLink>
+                <RouterLink to="/ShopByCategory/electronics" class="img_wrap">
                     <span>
-                        <p>Books</p>
-                    </span>
-                    <img src="../assets/catgory/book.png" alt="">
-                </div>
-                <div class="img_wrap">
-                    <span>
-                        <p>Tech</p>
+                        <p>Electronics</p>
                     </span>
                     <img src="../assets/catgory/tech.png" alt="">
-                </div>
-                <div class="img_wrap">
+                </RouterLink>
+                <RouterLink to="/ShopByCategory/women's clothing" class="img_wrap">
                     <span>
-                        <p>Sneakers</p>
+                        <p>Women's Clothing</p>
                     </span>
                     <img src="../assets/catgory/sneakers.png" alt="">
-                </div>
+                </RouterLink>
                 <div class="img_wrap">
                     <span>
-                        <p>Travel</p>
+                        <p>Travel(None)</p>
                     </span>
                     <img src="../assets/catgory/travel.png" alt="">
                 </div>
-
+                <div class="img_wrap">
+                    <span>
+                        <p>Books(None)</p>
+                    </span>
+                    <img src="../assets/catgory/book.png" alt="">
+                </div>
             </div>
         </div>
     </div>
@@ -89,7 +88,7 @@
                     padding: 20px;
                     color: #fff;
                     font-weight: 600;
-                    font-size: 23px;
+                    font-size: 20px;
 
                 }
             }

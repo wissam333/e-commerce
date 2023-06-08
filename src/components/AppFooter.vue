@@ -86,16 +86,16 @@
             <hr>
             <div class="copyright">
                 <div class="copyright_section">
-                    <i class="bi bi-heart-pulse-fill"></i>
-                    <p>This site is for training purposes only</p>
-                </div>
-                <div class="copyright_section">
                     <i class="bi bi-envelope-heart-fill"></i>
                     <p>Thanks to fakestoreapi for providing free fake api</p>
                 </div>
                 <div class="copyright_section">
                     <i class="bi bi-bookmark-heart-fill"></i>
                     <p>The design is Inspired by Musemind design</p>
+                </div>
+                <div class="copyright_section">
+                    <i class="bi bi-heart-pulse-fill"></i>
+                    <p>This site is for training purposes</p>
                 </div>
             </div>
         </div>
@@ -196,10 +196,23 @@
         display: flex;
         justify-content: space-between;
 
+        @media (max-width: 768px) {
+            flex-direction: column;
+        }
+
         .copyright_section {
             display: flex;
             align-items: center;
+            justify-content: center;
             margin: 20px 0 36px;
+
+            @media (max-width: 768px) {
+                margin: 10px 0px;
+            }
+
+            @media (max-width: 479px) {
+                justify-content: flex-start;
+            }
 
             i {
                 color: #c34482;

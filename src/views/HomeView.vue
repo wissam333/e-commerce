@@ -282,6 +282,7 @@ import AppFooter from '../components/AppFooter.vue';
 
         button {
             margin-top: 10px;
+            border: none;
 
             @media (max-width: 768px) {
                 font-size: 14px;
@@ -299,13 +300,31 @@ import AppFooter from '../components/AppFooter.vue';
             display: none;
         }
 
+        &:hover {
+            img {
+                &:nth-child(1) {
+                    transform: rotate(-40deg);
+                }
+
+                &:nth-child(2) {
+                    transform: rotate(-25deg);
+                }
+
+                &:nth-child(3) {
+                    transform: rotate(-10deg);
+                }
+            }
+        }
+
         img {
             position: absolute;
+            transition: all 0.3s ease;
 
             &:nth-child(1) {
                 position: absolute;
                 transform: rotate(-30deg);
                 z-index: 3;
+
             }
 
             &:nth-child(2) {
@@ -313,6 +332,7 @@ import AppFooter from '../components/AppFooter.vue';
                 z-index: 2;
                 bottom: -16px;
                 left: 11px;
+
             }
 
             &:nth-child(3) {
@@ -320,6 +340,7 @@ import AppFooter from '../components/AppFooter.vue';
                 transform: rotate(-15deg);
                 bottom: -36px;
                 left: 17px;
+
             }
 
         }

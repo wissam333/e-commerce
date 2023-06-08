@@ -84,7 +84,7 @@
                             </form>
                         </li>
                         <ul class="user_op navigation">
-                            <RouterLink to="AccountView" class="Account_icon nav-item">
+                            <RouterLink to="/LogInSignIn" class="Account_icon nav-item">
                                 <i class="bi bi-person"></i>
                                 Account
                             </RouterLink>
@@ -195,7 +195,7 @@ onMounted(() => {
     }
 
     .navi {
-        align-items: baseline;
+        box-shadow: none;
 
         .navbar-collapse {
             justify-content: flex-end;
@@ -227,7 +227,9 @@ onMounted(() => {
                     .dropdown {
                         button {
                             border: none !important;
-
+                            box-shadow: none;
+                            text-transform: capitalize;
+                            font-size: 16px;
                             &.btn.show,
                             &:active {
                                 border: none !important;

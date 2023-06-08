@@ -8,7 +8,7 @@
 .swiper-pagination {
   top: 99% !important;
 }
-.swiper-wrapper{
+.swiper-wrapper {
   margin-bottom: 40px !important;
 }
 .head3 {
@@ -23,7 +23,10 @@
 
   .quantity__minus,
   .quantity__plus {
-    display: block;
+    display: flex;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 22px;
     height: 23px;
     margin: 0;

@@ -7,6 +7,9 @@ import vue from '@vitejs/plugin-vue'
 export default defineConfig({
   base: '/e-commerce/',
   assetsDir: 'assets',
+  css: {
+    devSourcemap: true
+  },
   plugins: [
     vue({
       template: {

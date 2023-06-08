@@ -13,6 +13,9 @@ import 'bootstrap'
 /* import bootstrap icons */
 import 'bootstrap-icons/font/bootstrap-icons.css'
 
+/* import mdb */
+import 'mdb-vue-ui-kit/css/mdb.min.css'
+
 const app = createApp(App)
 
 app.use(createPinia())
