@@ -23,9 +23,16 @@
           </div>
           <div class="deals_items">
             <div>
-              <div class="item_img">
-                <img :src="item.image" alt="">
-              </div>
+              <RouterLink :to="{
+                path: '/ItemView',
+                name: 'ItemView',
+                component: ItemView,
+                params: { id: item.id }
+              }" :item="item">
+                <div class="item_img">
+                  <img :src="item.image" alt="">
+                </div>
+              </RouterLink>
               <div class="item_text">
                 <div class="item_description">
                   <h5 class="title"> {{ item.title }} </h5>

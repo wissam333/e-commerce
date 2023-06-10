@@ -19,7 +19,7 @@ export const getDataProduct = defineStore('getDataProduct', () => {
   }
   getData()
 
-  // in cart items 
+  // in cart items
   let filterd = computed(() => {
     return listItems.value.filter((item) => {
       if (item.inCart) {
@@ -27,7 +27,6 @@ export const getDataProduct = defineStore('getDataProduct', () => {
       }
     })
   })
-
 
   // subtotal and item count
   let Subtotal = ref(0)
@@ -44,4 +43,13 @@ export const getDataProduct = defineStore('getDataProduct', () => {
   })
 
   return { listItems, Subtotal, filterd, itemCount }
+})
+
+export const account = defineStore('account', () => {
+  const firstName = ref('')
+  const lastName = ref('')
+  let preview = ref(null)
+  let image = ref(null)
+  let active = ref('black')
+  return { firstName, lastName, preview, image, active }
 })

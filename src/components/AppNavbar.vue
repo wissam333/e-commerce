@@ -151,11 +151,9 @@ import { ref, onMounted } from 'vue';
 //store
 import { getDataProduct } from "../stores/counter";
 import { storeToRefs } from "pinia";
-
 const getItems = getDataProduct();
 const { filterd, Subtotal, itemCount } = storeToRefs(getItems);
 //end store
-
 
 
 
@@ -230,6 +228,7 @@ onMounted(() => {
                             box-shadow: none;
                             text-transform: capitalize;
                             font-size: 16px;
+
                             &.btn.show,
                             &:active {
                                 border: none !important;

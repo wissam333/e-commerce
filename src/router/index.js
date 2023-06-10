@@ -6,6 +6,7 @@ import WhatsNewView from '../views/WhatsNewView.vue'
 import CartView from '../views/CartView.vue'
 import ItemView from '../views/ItemView.vue'
 import LogInSignIn from '../views/LogInSignIn.vue'
+import AccountManagment from '../views/AccountManagment.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -48,6 +49,11 @@ const router = createRouter({
       path: '/LogInSignIn',
       name: 'LogInSignIn',
       component: LogInSignIn
+    },
+    {
+      path: '/AccountManagment',
+      name: 'AccountManagment',
+      component: AccountManagment
     }
   ]
 })
