@@ -3,7 +3,7 @@
         <div class="container">
             <h3 class="head3">Get Up To 70% Off</h3>
             <div class="plans">
-                <div class="plan plan1">
+                <div class="plan plan1" data-aos="fade-up">
                     <div class="plan_desc">
                         <p class="save">Save</p>
                         <h2 class="price">$100</h2>
@@ -13,7 +13,7 @@
                         <img src="../assets/plans/plan1.png" alt="">
                     </div>
                 </div>
-                <div class="plan plan2">
+                <div class="plan plan2" data-aos="fade-up">
                     <div class="plan_desc">
                         <p class="save">Save</p>
                         <h2 class="price">$29</h2>
@@ -23,7 +23,7 @@
                         <img src="../assets/plans/plan2.png" alt="">
                     </div>
                 </div>
-                <div class="plan plan3">
+                <div class="plan plan3" data-aos="fade-up">
                     <div class="plan_desc">
                         <p class="save">Save</p>
                         <h2 class="price">$67</h2>
@@ -33,7 +33,7 @@
                         <img src="../assets/plans/plan3.png" alt="">
                     </div>
                 </div>
-                <div class="plan plan4">
+                <div class="plan plan4" data-aos="fade-up">
                     <div class="plan_desc">
                         <p class="save">Save</p>
                         <h2 class="price">$59</h2>
@@ -48,6 +48,14 @@
         </div>
     </div>
 </template>
+<script setup>
+import { onMounted } from "vue"
+// import AOS
+import AOS from 'aos'
+onMounted(() => {
+    AOS.init()
+})
+</script>
 <style lang="scss" scoped>
 .BuyPlan {
     padding-top: 80px;
@@ -126,6 +134,7 @@
             .plan_img {
                 height: 100%;
                 overflow: hidden;
+
                 img {
                     transition: all 0.3s ease;
                     width: 100%;

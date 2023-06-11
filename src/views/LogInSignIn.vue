@@ -5,7 +5,7 @@
         <div class="px-4 px-md-5 text-center text-lg-start wrapper" style="background-color: hsl(0, 0%, 96%)">
             <div class="container">
                 <div class="row gx-lg-5 align-items-center">
-                    <div class="col-lg-6 mb-5 mb-lg-0">
+                    <div class="col-lg-6 mb-5 mb-lg-0" data-aos="fade-up">
                         <h1 class="my-5 display-3 fw-bold ls-tight">
                             Love Shopping??
                             <br />
@@ -18,7 +18,7 @@
                         </p>
                     </div>
 
-                    <div class="col-lg-6 mb-5 mb-lg-0">
+                    <div class="col-lg-6 mb-5 mb-lg-0" data-aos="fade-up">
                         <div class="card">
                             <div class="card-body py-5 px-md-5">
                                 <div class="auth_toggle d-flex justify-content-around mb-3">
@@ -76,6 +76,7 @@
                                         class="btn btn-primary btn-block mb-4">
                                         Sign up
                                     </button>
+                                    <p class="error_message">{{ errMessage }}</p>
                                 </form>
 
                                 <form v-if="Authentication == 'logIn'">
@@ -105,7 +106,7 @@
                                     <button @click.prevent="LogIn()" type="submit" class="btn btn-primary btn-block mb-4">
                                         Log In
                                     </button>
-                                    <p>{{ errMessage }}</p>
+                                    <p class="error_message">{{ errMessage }}</p>
                                 </form>
                             </div>
                         </div>
@@ -116,8 +117,8 @@
     </section>
 </template>
 <script setup>
-import { ref } from "vue"
-import { getAuth, createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword } from "firebase/auth"
+import { ref, onMounted } from "vue"
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth"
 import { useRouter } from "vue-router"
 // store
 import { account } from "../stores/counter";
@@ -126,28 +127,20 @@ import { storeToRefs } from "pinia";
 const getAccountData = account();
 const { firstName, lastName } = storeToRefs(getAccountData);
 // end store
+
+// import AOS
+import AOS from 'aos'
+onMounted(() => {
+    AOS.init()
+})
+
+
 let Authentication = ref("signIn")
-
-
-const auth = getAuth();
-onAuthStateChanged(auth, (user) => {
-    if (user) {
-        router.push("/AccountManagment")
-    } else {
-        // User is signed out
-        // ...
-    }
-});
-
-
-
-
-
-
 
 const email = ref("")
 const password = ref("")
 const router = useRouter()
+const errMessage = ref("")
 
 const register = () => {
     createUserWithEmailAndPassword(getAuth(), email.value, password.value)
@@ -157,11 +150,29 @@ const register = () => {
         })
         .catch((error) => {
             console.log(error.code)
+            switch (error.code) {
+                case "auth/invaild-email":
+                    errMessage.value = "invaild Email!"
+                    break;
+                case "auth/wrong-password":
+                    errMessage.value = "Wrong Password!"
+                    break;
+                case "auth/user-not-found":
+                    errMessage.value = "Can't Find The User!"
+                    break;
+                case "auth/network-request-failed":
+                    errMessage.value = "Please use vpn if you are in Syria!"
+                    break;
+                default:
+                    errMessage.value = "Email Or Password was incorrect!"
+                    break;
+            }
+        })
+        .catch((error) => {
+            console.log(error.code)
             alert(error.message)
         })
 }
-
-const errMessage = ref("")
 const LogIn = () => {
     signInWithEmailAndPassword(getAuth(), email.value, password.value)
         .then(() => {
@@ -180,12 +191,16 @@ const LogIn = () => {
                 case "auth/user-not-found":
                     errMessage.value = "Can't Find The User!"
                     break;
+                case "auth/network-request-failed":
+                    errMessage.value = "Please use vpn if you are in Syria!"
+                    break;
                 default:
                     errMessage.value = "Email Or Password was incorrect!"
                     break;
             }
         })
 }
+
 
 </script>
 <style lang="scss" scoped>
@@ -212,11 +227,17 @@ i {
 .auth_toggle {
     p {
         cursor: pointer;
-        padding: 10px 70px;
+        padding: 10px 15px;
 
         &.active {
             border-bottom: 3px solid #013d29;
         }
     }
+}
+
+.error_message {
+    color: red;
+    font-size: 18px;
+    font-weight: 700;
 }
 </style>

@@ -30,6 +30,9 @@ const firebaseConfig = {
 // Initialize Firebase
 initializeApp(firebaseConfig)
 
+//import AOS
+import 'aos/dist/aos.css'
+
 const app = createApp(App)
 
 app.use(createPinia())

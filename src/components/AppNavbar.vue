@@ -84,10 +84,10 @@
                             </form>
                         </li>
                         <ul class="user_op navigation">
-                            <RouterLink to="/LogInSignIn" class="Account_icon nav-item">
+                            <li @click="router.push(toAccount)" class="Account_icon nav-item">
                                 <i class="bi bi-person"></i>
                                 Account
-                            </RouterLink>
+                            </li>
                             <li class="Cart_icon_to_miniCart nav-item" @click="openCart = true">
                                 <span v-if="itemCount !== 0" class="itemS_inCart">{{ itemCount }}</span>
                                 <i class="bi bi-cart-plus"></i>
@@ -148,6 +148,8 @@
 
 <script setup>
 import { ref, onMounted } from 'vue';
+import { getAuth, onAuthStateChanged } from "firebase/auth"
+import { useRouter } from "vue-router"
 //store
 import { getDataProduct } from "../stores/counter";
 import { storeToRefs } from "pinia";
@@ -155,6 +157,17 @@ const getItems = getDataProduct();
 const { filterd, Subtotal, itemCount } = storeToRefs(getItems);
 //end store
 
+// go to accountManagement.vue when user logged in and to LogInSignIn.vue if user not logged in 
+const router = useRouter()
+const auth = getAuth();
+let toAccount = ref("/LogInSignIn")
+onAuthStateChanged(auth, (user) => {
+    if (user) {
+        toAccount.value = "/AccountManagment"
+    } else {
+        toAccount.value = "/LogInSignIn"
+    }
+});
 
 
 const openCart = ref(false);

@@ -1,6 +1,6 @@
 <template>
     <div class="item">
-        <div class="item_grid" v-for="item in singleItem" :key="item.id">
+        <div class="item_grid" v-for="item in singleItem" :key="item.id"  data-aos="fade-up">
             <div class="item_img">
                 <img :src="item.image" alt="">
             </div>
@@ -87,7 +87,7 @@
 
 <style lang="scss" scoped></style>
 <script setup>
-import { ref, computed } from 'vue'
+import { ref, computed, onMounted } from 'vue'
 import { useRoute } from 'vue-router'
 const route = useRoute()
 // store
@@ -97,6 +97,12 @@ import { storeToRefs } from "pinia";
 const getItems = getDataProduct();
 const { listItems } = storeToRefs(getItems);
 // end store
+
+// import AOS
+import AOS from 'aos'
+onMounted(() => {
+    AOS.init()
+})
 
 //variables
 let active = ref('color1')

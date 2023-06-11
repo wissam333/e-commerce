@@ -3,7 +3,7 @@
         <div class="container">
             <hr>
             <div class="grid_container">
-                <div class="part logo_Payments">
+                <div class="part logo_Payments" data-aos="fade-up">
                     <div class="logo">
                         <img src="../assets/logo.svg" alt="">
                     </div>
@@ -28,7 +28,7 @@
                     </div>
 
                 </div>
-                <div class="part Department">
+                <div class="part Department" data-aos="fade-up">
                     <h5>Department</h5>
                     <ul>
                         <li>Fashion</li>
@@ -47,7 +47,7 @@
                         <li>Furniture</li>
                     </ul>
                 </div>
-                <div class="part About">
+                <div class="part About" data-aos="fade-up">
                     <h5>About Us</h5>
                     <ul>
                         <li>About Shopcart</li>
@@ -61,7 +61,7 @@
                         <li>Ideas & Guides</li>
                     </ul>
                 </div>
-                <div class="part Services">
+                <div class="part Services" data-aos="fade-up">
                     <h5>Services</h5>
                     <ul>
                         <li>Gift Card</li>
@@ -71,7 +71,7 @@
                         <li>Account Signup</li>
                     </ul>
                 </div>
-                <div class="part Help">
+                <div class="part Help" data-aos="fade-up">
                     <h5>Help</h5>
                     <ul>
                         <li>Shopcart Help</li>
@@ -101,6 +101,14 @@
         </div>
     </div>
 </template>
+<script setup>
+import { onMounted } from "vue"
+// import AOS
+import AOS from 'aos'
+onMounted(() => {
+    AOS.init()
+})
+</script>
 <style lang="scss" scoped>
 .app_footer {
     .container {

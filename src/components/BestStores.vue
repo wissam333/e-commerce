@@ -2,7 +2,7 @@
     <div class="best_stores container">
         <h3 class="head3">Best Selling Store</h3>
         <div class="grid_store">
-            <div class="store Staples">
+            <div class="store Staples" data-aos="fade-up">
                 <div class="store_img">
                     <img class="items" src="../assets/store1.png" alt="">
                 </div>
@@ -18,7 +18,7 @@
                     </div>
                 </div>
             </div>
-            <div class="store Delivery">
+            <div class="store Delivery" data-aos="fade-up">
                 <div class="store_img">
                     <img class="items" src="../assets/store2.png" alt="">
                 </div>
@@ -34,7 +34,7 @@
                     </div>
                 </div>
             </div>
-            <div class="store Bevmo">
+            <div class="store Bevmo" data-aos="fade-up">
                 <div class="store_img">
                     <img class="items" src="../assets/store3.png" alt="">
                 </div>
@@ -50,7 +50,7 @@
                     </div>
                 </div>
             </div>
-            <div class="store Quicklly">
+            <div class="store Quicklly" data-aos="fade-up">
                 <div class="store_img">
                     <img class="items" src="../assets/store4.png" alt="">
                 </div>
@@ -69,6 +69,14 @@
         </div>
     </div>
 </template>
+<script setup>
+import { onMounted } from "vue"
+// import AOS
+import AOS from 'aos'
+onMounted(() => {
+    AOS.init()
+})
+</script>
 <style lang="scss" scoped>
 .best_stores {
     margin-top: 80px;

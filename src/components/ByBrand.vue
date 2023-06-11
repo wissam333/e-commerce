@@ -4,7 +4,7 @@
             <h3 class="head3">Choose By Brand</h3>
             <div class="brands">
 
-                <div class="brand">
+                <div class="brand" data-aos="fade-up">
                     <div class="brand_img">
                         <img src="../assets/brand/brand1.png" alt="">
                     </div>
@@ -13,7 +13,7 @@
                         <p>Delivery with in 24 hours</p>
                     </div>
                 </div>
-                <div class="brand">
+                <div class="brand" data-aos="fade-up">
                     <div class="brand_img">
                         <img src="../assets/brand/brand2.png" alt="">
                     </div>
@@ -22,7 +22,7 @@
                         <p>Delivery with in 24 hours</p>
                     </div>
                 </div>
-                <div class="brand">
+                <div class="brand" data-aos="fade-up">
                     <div class="brand_img">
                         <img src="../assets/brand/brand3.png" alt="">
                     </div>
@@ -31,7 +31,7 @@
                         <p>Delivery with in 24 hours</p>
                     </div>
                 </div>
-                <div class="brand">
+                <div class="brand" data-aos="fade-up">
                     <div class="brand_img">
                         <img src="../assets/brand/brand4.png" alt="">
                     </div>
@@ -40,7 +40,7 @@
                         <p>Delivery with in 24 hours</p>
                     </div>
                 </div>
-                <div class="brand">
+                <div class="brand" data-aos="fade-up">
                     <div class="brand_img">
                         <img src="../assets/brand/brand5.png" alt="">
                     </div>
@@ -49,7 +49,7 @@
                         <p>Delivery with in 24 hours</p>
                     </div>
                 </div>
-                <div class="brand">
+                <div class="brand" data-aos="fade-up">
                     <div class="brand_img">
                         <img src="../assets/brand/brand6.png" alt="">
                     </div>
@@ -58,7 +58,7 @@
                         <p>Delivery with in 24 hours</p>
                     </div>
                 </div>
-                <div class="brand">
+                <div class="brand" data-aos="fade-up">
                     <div class="brand_img">
                         <img src="../assets/brand/brand7.png" alt="">
                     </div>
@@ -67,7 +67,7 @@
                         <p>Delivery with in 24 hours</p>
                     </div>
                 </div>
-                <div class="brand">
+                <div class="brand" data-aos="fade-up">
                     <div class="brand_img">
                         <img src="../assets/brand/brand8.png" alt="">
                     </div>
@@ -80,6 +80,14 @@
         </div>
     </div>
 </template>
+<script setup>
+import { onMounted } from "vue"
+// import AOS
+import AOS from 'aos'
+onMounted(() => {
+    AOS.init()
+})
+</script>
 <style lang="scss" scoped>
 .byBrand {
     padding-top: 80px;

@@ -16,7 +16,7 @@
           :class="active == 'women\'s clothing' ? 'active' : ''">Women's Clothing</RouterLink>
       </ul>
       <div class="gallery">
-        <div class="item" v-for="item in category" :key="item.id">
+        <div class="item" v-for="item in category" :key="item.id" data-aos="fade-up">
           <div class="heart" @click="item.like = !item.like">
             <i v-if="!item.like" class="bi bi-heart"></i>
             <i v-if="item.like" class="bi bi-heart-fill"></i>
@@ -60,7 +60,7 @@
   </section>
 </template>
 <script setup>
-import { ref, computed } from 'vue'
+import { ref, computed, onMounted } from 'vue'
 import { useRoute } from 'vue-router'
 // store
 import { getDataProduct } from "../stores/counter";
@@ -82,6 +82,13 @@ let category = computed(() => {
       return item
     }
   })
+})
+
+
+// import AOS
+import AOS from 'aos'
+onMounted(() => {
+  AOS.init()
 })
 
 </script>

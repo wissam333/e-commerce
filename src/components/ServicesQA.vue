@@ -3,7 +3,7 @@
         <div class="container">
             <h3 class="head3">Services To Help You Shop</h3>
             <div class="services_boxes">
-                <div class="box">
+                <div class="box" data-aos="fade-up">
                     <div class="box_content">
                         <h4>Frequently Asked Questions</h4>
                         <p>Updates on safe Shopping in our Stores</p>
@@ -13,7 +13,7 @@
                     </div>
 
                 </div>
-                <div class="box">
+                <div class="box" data-aos="fade-up">
                     <div class="box_content">
                         <h4>Online Payment Process</h4>
                         <p>Updates on safe Shopping in our Stores</p>
@@ -23,7 +23,7 @@
                     </div>
 
                 </div>
-                <div class="box">
+                <div class="box" data-aos="fade-up">
                     <div class="box_content">
                         <h4>Home Delivery Options</h4>
                         <p>Updates on safe Shopping in our Stores</p>
@@ -36,6 +36,14 @@
         </div>
     </div>
 </template>
+<script setup>
+import { onMounted } from "vue"
+// import AOS
+import AOS from 'aos'
+onMounted(() => {
+    AOS.init()
+})
+</script>
 <style lang="scss" scoped>
 .Services {
     padding-top: 80px;
@@ -63,9 +71,10 @@
             background-color: #f5f6f6;
             border-radius: 10px;
             overflow: hidden;
-            &:hover{
-                .box_img{
-                    img{
+
+            &:hover {
+                .box_img {
+                    img {
                         transform: scale(1.2);
                     }
                 }
@@ -89,6 +98,7 @@
 
             .box_img {
                 overflow: hidden;
+
                 img {
                     width: 100%;
                     transition: all 0.4s ease;

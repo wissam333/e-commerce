@@ -7,7 +7,7 @@
                         <div id="profileColor" class="profile rounded-top text-white d-flex flex-row">
                             <div class="ms-4 mt-5 d-flex flex-column" style="width: 150px;">
                                 <img v-if="preview" :src="preview" class="img-fluid img-thumbnail mt-4 mb-2"
-                                    style="width: 150px; z-index: 1" />
+                                    style="width: 100%;height: 150px; z-index: 1" />
                                 <img v-if="!preview"
                                     src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-profiles/avatar-1.webp"
                                     alt="Generic placeholder image" class="img-fluid img-thumbnail mt-4 mb-2"

@@ -3,37 +3,37 @@
         <div class="container">
             <h3 class="head3">Shop Our Top Categories</h3>
             <div class="images">
-                <RouterLink to="/ShopByCategory/men's clothing" class="img_wrap">
+                <RouterLink to="/ShopByCategory/men's clothing" class="img_wrap" data-aos="fade-up">
                     <span>
                         <p>Men's Clothing</p>
                     </span>
                     <img src="../assets/catgory/furniture.png" alt="">
                 </RouterLink>
-                <RouterLink to="/ShopByCategory/jewelery" class="img_wrap">
+                <RouterLink to="/ShopByCategory/jewelery" class="img_wrap" data-aos="fade-up">
                     <span>
                         <p>Jewelery</p>
                     </span>
                     <img src="../assets/catgory/handBag.png" alt="">
                 </RouterLink>
-                <RouterLink to="/ShopByCategory/electronics" class="img_wrap">
+                <RouterLink to="/ShopByCategory/electronics" class="img_wrap" data-aos="fade-up">
                     <span>
                         <p>Electronics</p>
                     </span>
                     <img src="../assets/catgory/tech.png" alt="">
                 </RouterLink>
-                <RouterLink to="/ShopByCategory/women's clothing" class="img_wrap">
+                <RouterLink to="/ShopByCategory/women's clothing" class="img_wrap" data-aos="fade-up">
                     <span>
                         <p>Women's Clothing</p>
                     </span>
                     <img src="../assets/catgory/sneakers.png" alt="">
                 </RouterLink>
-                <div class="img_wrap">
+                <div class="img_wrap" data-aos="fade-up">
                     <span>
                         <p>Travel(None)</p>
                     </span>
                     <img src="../assets/catgory/travel.png" alt="">
                 </div>
-                <div class="img_wrap">
+                <div class="img_wrap" data-aos="fade-up">
                     <span>
                         <p>Books(None)</p>
                     </span>
@@ -43,6 +43,14 @@
         </div>
     </div>
 </template>
+<script setup>
+import { onMounted } from "vue"
+// import AOS
+import AOS from 'aos'
+onMounted(() => {
+    AOS.init()
+})
+</script>
 <style lang="scss" scoped>
 .category {
     padding-top: 80px;

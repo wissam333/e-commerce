@@ -6,7 +6,7 @@
                 type: 'progressbar'
             }" :modules="modules" :breakpoints="breakpoints.swiperOptions.breakpoints" :space-between="50"
                 @swiper="onSwiper" @slideChange="onSlideChange">
-                <swiper-slide class="item" v-for="item in listItems" :key="item.id">
+                <swiper-slide class="item" v-for="item in listItems" :key="item.id"  data-aos="fade-up">
                     <div class="heart" @click="item.like = !item.like">
                         <i v-if="!item.like" class="bi bi-heart"></i>
                         <i v-if="item.like" class="bi bi-heart-fill"></i>
@@ -51,7 +51,7 @@
     </div>
 </template>
 <script setup>
-import { ref } from 'vue';
+import { ref, onMounted } from 'vue';
 import { defineComponent } from 'vue'
 
 // Import Swiper 
@@ -70,6 +70,12 @@ import { storeToRefs } from "pinia";
 const getItems = getDataProduct();
 const { listItems } = storeToRefs(getItems);
 // end store
+
+// import AOS
+import AOS from 'aos'
+onMounted(() => {
+    AOS.init()
+})
 
 // swiper configuration
 defineComponent({

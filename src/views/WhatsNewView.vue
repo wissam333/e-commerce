@@ -2,5 +2,5 @@
 </script>
 
 <template>
-    <h1>WhatsNew</h1>
+    <h1>Nothing New yet!</h1>
 </template>
