@@ -1,8 +1,3 @@
-<script setup>
-import { RouterView } from 'vue-router';
-import AppNavbar from './components/AppNavbar.vue';
-</script>
-
 <template>
   <div class="app">
     <div class="background_container">
@@ -47,9 +42,12 @@ import AppNavbar from './components/AppNavbar.vue';
     <RouterView></RouterView>
   </div>
 </template>
+<script setup>
+import { RouterView } from 'vue-router';
+import AppNavbar from './components/AppNavbar.vue';
 
+</script>
 <style lang="scss" scoped>
-
 .background_container {
   background-color: #013d29;
 

@@ -15,16 +15,17 @@
                     <img src="../assets/stage.webp" alt="">
                 </div>
                 <div class="img_wrap">
-                    <div class="other">
+
+                    <div class="other" data-aos="fade-left" data-aos-duration="1000">
                         <img src="../assets/other.webp" alt="">
                     </div>
-                    <div class="tour">
+                    <div class="tour" data-aos="fade-left" data-aos-duration="1000">
                         <img src="../assets/tour.webp" alt="">
                     </div>
-                    <div class="electronic">
+                    <div class="electronic" data-aos="fade-left" data-aos-duration="1000">
                         <img src="../assets/electronic.webp" alt="">
                     </div>
-                    <div class="snaks">
+                    <div class="snaks" data-aos="fade-left" data-aos-duration="1000">
                         <img src="../assets/snaks.webp" alt="">
                     </div>
                 </div>
@@ -75,6 +76,12 @@ import BestStores from '../components/BestStores.vue';
 import ServicesQA from '../components/ServicesQA.vue';
 import AppFooter from '../components/AppFooter.vue';
 
+import { onMounted } from "vue"
+// import AOS
+import AOS from 'aos'
+onMounted(() => {
+    AOS.init()
+})
 </script>
 <style lang="scss" scoped>
 .learn_more {

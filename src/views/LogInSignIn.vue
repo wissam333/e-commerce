@@ -219,11 +219,6 @@ button[type="submit"] {
 i {
     font-size: 20px;
 }
-
-.wrapper {
-    padding-top: 40px;
-}
-
 .auth_toggle {
     p {
         cursor: pointer;

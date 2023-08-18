@@ -2,11 +2,11 @@
     <div class="deals">
         <div class="container">
             <h3 class="head3">Todays Best Deals For You!</h3>
-            <swiper class="swiper" :pagination="{
+            <swiper data-aos="fade-up" class="swiper" :pagination="{
                 type: 'progressbar'
             }" :modules="modules" :breakpoints="breakpoints.swiperOptions.breakpoints" :space-between="50"
                 @swiper="onSwiper" @slideChange="onSlideChange">
-                <swiper-slide class="item" v-for="item in listItems" :key="item.id"  data-aos="fade-up">
+                <swiper-slide class="item" v-for="item in listItems" :key="item.id">
                     <div class="heart" @click="item.like = !item.like">
                         <i v-if="!item.like" class="bi bi-heart"></i>
                         <i v-if="item.like" class="bi bi-heart-fill"></i>

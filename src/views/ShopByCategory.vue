@@ -104,6 +104,7 @@ onMounted(() => {
     list-style: none;
     padding: 0;
     margin-top: 50px;
+    margin-bottom: 0 !important;
 
     li,
     a {
@@ -131,7 +132,6 @@ onMounted(() => {
     grid-template-columns: 1fr 1fr 1fr 1fr;
     column-gap: 20px;
     row-gap: 20px;
-    margin-top: 50px;
     margin-bottom: 50px;
 
     @media (max-width: 1200px) {
