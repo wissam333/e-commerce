@@ -18,7 +18,6 @@ export const getDataProduct = defineStore('getDataProduct', () => {
     })
   }
   getData()
-
   // in cart items
   let filterd = computed(() => {
     return listItems.value.filter((item) => {
