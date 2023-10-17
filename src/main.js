@@ -13,9 +13,6 @@ import 'bootstrap'
 /* import bootstrap icons */
 import 'bootstrap-icons/font/bootstrap-icons.css'
 
-/* import mdb */
-import 'mdb-vue-ui-kit/css/mdb.min.css'
-
 // Import the functions you need from the SDKs you need
 import { initializeApp } from 'firebase/app'
 // Your web app's Firebase configuration

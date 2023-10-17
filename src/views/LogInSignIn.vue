@@ -204,6 +204,8 @@ const LogIn = () => {
 
 </script>
 <style lang="scss" scoped>
+/* import mdb */
+@import '../../node_modules/mdb-vue-ui-kit/css/mdb.min.css';
 .title {
     color: #013d29;
 }
